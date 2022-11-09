@@ -6,6 +6,7 @@
 #
 # Run ACS test suite.
 
+mkdir ${WORKSPACE}/logs
 ${WORKSPACE}/../fvp/Base_RevC_AEMvA_pkg/models/Linux64_GCC-9.3/FVP_Base_RevC-2xAEMvA \
 -C pctl.startup=0.0.0.0 \
 -C cluster0.NUM_CORES=4 \
@@ -30,3 +31,12 @@ ${WORKSPACE}/../fvp/Base_RevC_AEMvA_pkg/models/Linux64_GCC-9.3/FVP_Base_RevC-2xA
 -C bp.dram_metadata.is_enabled=1 \
 -C cluster0.memory_tagging_support_level=2 \
 -C cluster1.memory_tagging_support_level=2 \
+-C bp.pl011_uart0.out_file=${WORKSPACE}/logs/fvp-uart0.log \
+-C bp.pl011_uart1.out_file=${WORKSPACE}/logs/fvp-uart1.log \
+-C bp.pl011_uart2.out_file=${WORKSPACE}/logs/fvp-uart2.log \
+-C bp.vis.disable_visualisation=true \
+-C bp.terminal_0.start_telnet=false \
+-C bp.terminal_1.start_telnet=false \
+-C bp.terminal_2.start_telnet=false \
+-C bp.terminal_3.start_telnet=false \
+-C bp.pl011_uart2.shutdown_tag="END OF ACS"
