@@ -28,7 +28,7 @@ cd ${WORKSPACE}/trusted-firmware-a
 echo "Building TF-A."
 make CROSS_COMPILE=aarch64-none-elf- PLAT=fvp DEBUG=1 \
 	BL33=${WORKSPACE}/ff-a-acs/build/output/vm1.bin \
-	BL32=${WORKSPACE}/hafnium/out/reference/secure_aem_v8a_fvp_clang/hafnium.bin \
+	BL32=${WORKSPACE}/hafnium/out/reference/secure_aem_v8a_fvp_vhe_clang/hafnium.bin \
 	SP_LAYOUT_FILE=${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp/sp_layout.json \
 	ARM_SPMC_MANIFEST_DTS=${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp/fvp_spmc_manifest.dts \
 	ARM_BL2_SP_LIST_DTS=${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp/fvp_tb_fw_config.dts \
