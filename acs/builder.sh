@@ -17,7 +17,8 @@ cmake ../ -G"Unix Makefiles" \
 make
 
 # Build Hafnium
-export PATH=${WORKSPACE}/hafnium/prebuilts/linux-x64/clang/bin:${WORKSPACE}/hafnium/prebuilts/linux-x64/dtc:$PATH
+export PATH=${WORKSPACE}/hafnium/prebuilts/linux-x64/dtc:$PATH
+
 cd ${WORKSPACE}/hafnium
 echo "Building Hafnium."
 make PROJECT=reference
