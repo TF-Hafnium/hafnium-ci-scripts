@@ -21,7 +21,7 @@ export PATH=${WORKSPACE}/hafnium/prebuilts/linux-x64/dtc:$PATH
 
 cd ${WORKSPACE}/hafnium
 echo "Building Hafnium."
-make PROJECT=reference
+make PLATFORM=secure_aem_v8a_fvp_vhe
 
 # Build TF-A
 cd ${WORKSPACE}/trusted-firmware-a
