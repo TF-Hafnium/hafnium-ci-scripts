@@ -33,7 +33,8 @@ make CROSS_COMPILE=aarch64-none-elf- PLAT=fvp DEBUG=1 \
 	ARM_SPMC_MANIFEST_DTS=${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp/fvp_spmc_manifest.dts \
 	ARM_BL2_SP_LIST_DTS=${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp/fvp_tb_fw_config.dts \
 	ARM_ARCH_MINOR=5 BRANCH_PROTECTION=1 \
-	CTX_INCLUDE_PAUTH_REGS=1 CTX_INCLUDE_EL2_REGS=1  CTX_INCLUDE_MTE_REGS=1 \
+	CTX_INCLUDE_PAUTH_REGS=1 CTX_INCLUDE_EL2_REGS=1 CTX_INCLUDE_MTE_REGS=1 \
+	GIC_EXT_INTID=1 PLAT_TEST_SPM=1 \
 	SPD=spmd \
 	all fip
 
