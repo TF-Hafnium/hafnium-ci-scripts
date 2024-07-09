@@ -62,13 +62,28 @@ echo "Building Hafnium."
 make -C ${WORKSPACE}/hafnium PLATFORM=secure_aem_v8a_fvp_vhe
 
 # Setup the ACS test suite.
-cd ${WORKSPACE}/ff-a-acs
+pushd ${WORKSPACE}/ff-a-acs
 mkdir build
+popd
+
+FFA_ACS_MANIFEST_FOLDER=${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp
 
 echo "Building ACS test suite (S-EL1 targets)."
 build_acs 1
-build_tfa ${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp/sp_layout.json ${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp/fvp_spmc_manifest.dts
+build_tfa ${FFA_ACS_MANIFEST_FOLDER}/sp_layout.json ${FFA_ACS_MANIFEST_FOLDER}/fvp_spmc_manifest.dts
 copy_tfa_fip ${WORKSPACE}/fip_sp_sel1.bin
+
+make -C ${WORKSPACE}/trusted-firmware-a realclean
+
+# Clean ACS output folder.
+pushd ${WORKSPACE}/ff-a-acs
+rm -r build/*
+popd
+
+echo "Building ACS test suite (S-EL0 targets)."
+build_acs 0
+build_tfa ${FFA_ACS_MANIFEST_FOLDER}/sp_layout_el0.json ${FFA_ACS_MANIFEST_FOLDER}/fvp_spmc_manifest_el0.dts
+copy_tfa_fip ${WORKSPACE}/fip_sp_sel0.bin
 
 echo "Finished building all targets."
 cd ${WORKSPACE}

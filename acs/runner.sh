@@ -61,4 +61,4 @@ run_fvp() {
 }
 
 run_fvp ${WORKSPACE}/fip_sp_sel1.bin $SP_SEL1_LOGS
-#TODO: validate with the S-EL0 targets
+run_fvp ${WORKSPACE}/fip_sp_sel0.bin $SP_SEL0_LOGS
