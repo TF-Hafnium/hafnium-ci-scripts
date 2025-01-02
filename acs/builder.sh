@@ -30,6 +30,7 @@ build_tfa() {
 		PLAT_TEST_SPM=1 \
 		ENABLE_FEAT_MTE2=1 \
 		SPD=spmd \
+		ENABLE_SPMD_LP=1\
 		ARM_BL2_SP_LIST_DTS=${WORKSPACE}/trusted-firmware-a/build/fvp/debug/sp_list_fragment.dts \
 		all fip -j8
 }
@@ -70,7 +71,7 @@ FFA_ACS_MANIFEST_FOLDER=${WORKSPACE}/ff-a-acs/platform/manifest/tgt_tfa_fvp
 
 echo "Building ACS test suite (S-EL1 targets)."
 build_acs 1
-build_tfa ${FFA_ACS_MANIFEST_FOLDER}/sp_layout.json ${FFA_ACS_MANIFEST_FOLDER}/fvp_spmc_manifest.dts
+build_tfa ${FFA_ACS_MANIFEST_FOLDER}/sp_layout_v12.json ${FFA_ACS_MANIFEST_FOLDER}/fvp_spmc_manifest.dts
 copy_tfa_fip ${WORKSPACE}/fip_sp_sel1.bin
 
 make -C ${WORKSPACE}/trusted-firmware-a realclean
@@ -82,7 +83,7 @@ popd
 
 echo "Building ACS test suite (S-EL0 targets)."
 build_acs 0
-build_tfa ${FFA_ACS_MANIFEST_FOLDER}/sp_layout_el0.json ${FFA_ACS_MANIFEST_FOLDER}/fvp_spmc_manifest_el0.dts
+build_tfa ${FFA_ACS_MANIFEST_FOLDER}/sp_layout_el0_v12.json ${FFA_ACS_MANIFEST_FOLDER}/fvp_spmc_manifest_el0.dts
 copy_tfa_fip ${WORKSPACE}/fip_sp_sel0.bin
 
 echo "Finished building all targets."
