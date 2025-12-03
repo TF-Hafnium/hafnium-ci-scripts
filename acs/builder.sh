@@ -32,7 +32,6 @@ build_tfa() {
 		SPD=spmd \
 		ENABLE_SPMD_LP=1\
 		ARM_BL2_SP_LIST_DTS=${WORKSPACE}/trusted-firmware-a/build/fvp/debug/sp_list_fragment.dts \
-		POETRY= \
 		all fip -j8
 }
 
