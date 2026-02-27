@@ -1,0 +1,14 @@
+To: hafnium@lists.trustedfirmware.org
+Cc: tfa-lts@lists.trustedfirmware.org
+Subject: Hafnium LTS v{version} Release Announcement
+
+Hello,
+
+Hafnium LTS version {version} is now available. This release contains the following patches:
+
+{commits}
+
+{references}
+
+Thanks,
+Hafnium LTS team
