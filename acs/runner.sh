@@ -8,6 +8,14 @@
 
 set -ex
 
+# FVP binary must be provided by the environment (e.g. Jenkins job)
+if [ -z "${HAFNIUM_FVP}" ]; then
+    echo "ERROR: HAFNIUM_FVP is not set"
+    exit 1
+fi
+
+echo "Using FVP binary: ${HAFNIUM_FVP}"
+
 mkdir ${WORKSPACE}/logs
 SP_SEL1_LOGS=${WORKSPACE}/logs/SP_SEL1
 SP_SEL0_LOGS=${WORKSPACE}/logs/SP_SEL0
@@ -20,7 +28,7 @@ run_fvp() {
 	local FIP=$1
 	local LOGS=$2
 
-	${WORKSPACE}/../fvp/Base_RevC_AEMvA_pkg/models/Linux64_GCC-9.3/FVP_Base_RevC-2xAEMvA \
+	"${HAFNIUM_FVP}" \
 	-C pctl.startup=0.0.0.0 \
 	-C cluster0.NUM_CORES=4 \
 	-C cluster1.NUM_CORES=4 \
